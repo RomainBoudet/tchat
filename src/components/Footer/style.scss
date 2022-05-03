@@ -1,1 +1,9 @@
 @use 'src/styles/vars';
+
+.footer {
+  background-color: vars.$dark-brown;
+  margin-top: 2rem;
+  padding: 2rem;
+  color: #faf6f1;
+  text-align: center;
+}

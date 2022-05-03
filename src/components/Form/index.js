@@ -1,7 +1,7 @@
 // import npm
 import React from 'react';
-//import PropTypes from 'prop-types';
-// import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Send } from 'react-feather';
+
 
 // import style
 import './style.scss';
@@ -9,9 +9,15 @@ import './style.scss';
 // import react
 
 const Form = () => (
-  <main>
-    <h1>Mon formulaire </h1>
-  </main>
+ <form className='form'>
+    <input
+    type='text'
+    className='form_input'
+    placeholder='Saisissez votre message...'
+    />
+    <button type='submit' className='form_submit'> <Send size={32} /> </button>
+
+ </form>
 
 );
 

@@ -1,5 +1,6 @@
 // import npm
 import React from 'react';
+import Message from './message';
 //import PropTypes from 'prop-types';
 // import { Routes, Route, Outlet, Link, NavLink } from "react-router-dom";
 
@@ -9,9 +10,13 @@ import './style.scss';
 // import react
 
 const Messages = () => (
-  <header>
-    <h1>Mes messages ! </h1>
-  </header>
+<div className='messages'>
+  <Message/>
+  <Message/>
+  <Message/>
+  <Message/>
+  <Message/>
+</div>
 );
 
 /* Exmaple.propTypes = {

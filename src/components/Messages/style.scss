@@ -1,9 +1,34 @@
 @use 'src/styles/vars';
- 
-img {
-  max-width: 150px;
+
+.messages {
+  padding: 2em;
+  flex: 1;
+  height: 100ù;
+  overflow-x: hidden;
+  overflow-y: auto;
+
 }
 
-h1 {
-  margin: 2rem;
+.message {
+  text-align: left;
+  margin-bottom: 2rem;
+
+  &_body {
+    background-color: vars.$light-color;
+    padding: 1.5rem;
+    display: inline-block;
+    border-radius: 2rem;
+    max-width: 75%;
+
+  }
+
+ &_author {
+    margin: 1rem;
+    display: block;
+    position: relative;
+  } 
+
+  & &_other {
+    text-align: left;
+  }
 }

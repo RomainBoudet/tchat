@@ -1,1 +1,20 @@
 @use 'src/styles/vars';
+
+.form {
+  display: flex;
+  &_input {
+    height: 5em;
+    border: 0;
+    flex: 1; 
+    padding: 2em;
+  }
+  &_submit {
+    color: vars.$dark-brown;
+    background-color: white;
+    border: 0;
+    width: 5rem;
+    &:hover{
+      color: vars.$dark-orange;
+    }
+  }
+}

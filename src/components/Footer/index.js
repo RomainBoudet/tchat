@@ -7,7 +7,7 @@ import './style.scss';
 // import react
 
 const Footer = () => (
-  <footer>
+  <footer className='footer'>
     <span> Ⓒ Romain Boudet - {(new Date()).getFullYear()} </span>
   </footer>
 
