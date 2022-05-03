@@ -1,0 +1,22 @@
+@use 'src/styles/vars';
+
+// aniennement utilisé pour l'ancienne version du spinner
+/* .spinner {
+  width: 50px;
+  height: 50px;
+  background-color: vars.$color-back;
+  margin: 2rem auto;
+  animation: rotateplane 1.5s infinite ease-in-out;
+}
+
+@keyframes rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+  }
+} */
