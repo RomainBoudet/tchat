@@ -1,18 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss'
+import classNames from 'classnames';
 
-const message = () => (
-  <div className='message'>
+const Message = ({ author, message, isOther }) => (
+  <div className= {classNames ('message',  {'message_other' : isOther })}>
     <div className='message_author'>
-      Super chat
+      { author }
     </div>
     <div className='message_body'>
-      Alors, ça roule ?
+      { message }
     </div>
   </div>
 );
 
-message.propTypes = {};
+Message.propTypes = {
+author: PropTypes.string.isRequired,
+message: PropTypes.string.isRequired,
+isOther: PropTypes.bool.isRequired,
+};
 
-export default message;
+export default Message;

@@ -2,14 +2,8 @@
 
 // Pour éviter les fautes, et profiter de l'autocompletion, on met la string en variable !
 // Par convention, on nomme la string comme le nom de la variable, en MAJUSCULE.
-export const CHANGE_INPUT_SEARCH = 'CHANGE_INPUT_SEARCH';
+export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const CHANGE_INPUT_VALIDATE = 'CHANGE_INPUT_VALIDATE';
-export const LOADING = 'LOADING';
-export const FETCH_DATA = 'FETCH_DATA';
-export const FETCH_MORE_DATA = 'FETCH_MORE_DATA';
-export const SAVE_DATA = 'SAVE_DATA';
-export const SAVE_MESSAGE = 'SAVE_MESSAGE';
-
 
 // ACTIONs CREATORS
 
@@ -17,35 +11,15 @@ export const SAVE_MESSAGE = 'SAVE_MESSAGE';
 // On devrait également suivre la convention FSA du flux standart d'action ! 
 // propriété payload et pas autre chose ! 
 
-export const changeInputSearch = (inputSearch) => ({
-  type: CHANGE_INPUT_SEARCH,
-  inputSearch,
+export const changeInput = (input) => ({
+  type: CHANGE_INPUT,
+  input,
 });
 
 export const changeInputValidate = (inputValidate) => ({
   type: CHANGE_INPUT_VALIDATE,
   inputValidate,
 });
-
-export const loading = (bool) => ({
-  type: LOADING,
-  bool,
-});
-
-export const saveData = (data) => ({
-  type: SAVE_DATA,
-  data,
-});
-
-//!
-export const fetchData = () => ({
-  type: FETCH_DATA,
-});
-
-export const fetchMoreData = () => ({
-  type: FETCH_MORE_DATA,
-});
-
 
 // FSA : https://redux.js.org/tutorials/fundamentals/part-7-standard-patterns 
 // https://github.com/redux-utilities/flux-standard-action#motivation

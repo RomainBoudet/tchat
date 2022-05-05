@@ -1,6 +1,7 @@
 // import npm
 import React from 'react';
 import { Send } from 'react-feather';
+import PropTypes from 'prop-types';
 
 
 // import style
@@ -8,26 +9,40 @@ import './style.scss';
 
 // import react
 
-const Form = () => (
- <form className='form'>
+const Form = ({input, onChange, onSubmit}) => {
+
+  const handleOnChange = (event) => {
+    console.log(event.target.value);
+    onChange(event.target.value);
+  };
+
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmit(event.target[0].value);
+  };
+
+  return (
+ <form className='form' onSubmit={handleSubmit} >
     <input
     type='text'
     className='form_input'
     placeholder='Saisissez votre message...'
+    onChange={handleOnChange}
+    value={input}
     />
-    <button type='submit' className='form_submit'> <Send size={32} /> </button>
+    <button type='submit' className='form_submit' > <Send size={32} /> </button>
 
  </form>
 
-);
+  );
+}
 
-/* Exmaple.propTypes = {
-  ingredients: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    unit: PropTypes.string.isRequired,
-    myFunction: PropTypes.func.isRequired,
-  })).isRequired,
-}; */
+Form.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  input: PropTypes.string.isRequired,
+};
 
 
 

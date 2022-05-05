@@ -1,40 +1,47 @@
-/* import {
-  CHANGE_INPUT_SEARCH, CHANGE_INPUT_VALIDATE, LOADING, SAVE_DATA, SAVE_MESSAGE,
-  } from '../actions'; */
+ import {
+  CHANGE_INPUT, CHANGE_INPUT_VALIDATE,
+  } from '../actions';
   
   const stateInitial = {
-    message: 'Une jolie app avec react V18 et redux !',
+    messages: [{
+      id: 1,
+      author: 'Super Chat',
+      message: 'Salut, ça va ?',
+      isOther: true,
+    },
+    {
+      id: 2,
+      author: 'Super Chat',
+      message: 'T\'as pas des super croquettes ?',
+      isOther: true,
+    },
+    {
+    id: 3,
+    author: 'Super Chat',
+    message: 'Allez !! ',
+    isOther: true,
+    }],
+
+    inputValidate: '',
+    input: '',
   }
   
-  const reducer = (stateActuel = stateInitial, action = {}) => {
+  const reducer = (stateActuel = stateInitial, action) => {
+    console.log("on est dans le reducer !!");
+
   // j'éxamine le .type de chaque action !
      switch (action.type) {
-      /* case CHANGE_INPUT_SEARCH:
+       case CHANGE_INPUT:
+         console.log("on est dans le case change !!");
         return {
           ...stateActuel,
-          inputSearch: action.inputSearch,
+          input: action.input,
         };
       case CHANGE_INPUT_VALIDATE:
         return {
           ...stateActuel,
           inputValidate: action.inputValidate,
         };
-      case LOADING:
-        return {
-          ...stateActuel,
-          loading: action.bool,
-        };
-      case SAVE_DATA:
-        return {
-          ...stateActuel,
-          data: action.data,
-        };
-      case SAVE_MESSAGE:
-        return {
-          ...stateActuel,
-          message: action.message,
-        }; */
-  
       default:
         return stateActuel;
     } 
