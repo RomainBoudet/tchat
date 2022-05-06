@@ -1,6 +1,8 @@
 import {
   CHANGE_INPUT, SEND_NEW_MESSAGE,
   } from '../actions';
+
+  import { hightestID } from '../selector';
   
   const stateInitial = {
     input: '',
@@ -45,7 +47,7 @@ import {
             messages: [
               ...state.messages,
               {
-                id: 5,
+              id: (hightestID(state.messages) + 1),
               author: 'Moi',
               message: state.input,
               isOther: false,
