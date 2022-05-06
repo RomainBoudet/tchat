@@ -2,13 +2,13 @@
 
 .form {
   display: flex;
-  &_input {
+  &__input {
     height: 5em;
     border: 0;
     flex: 1; 
     padding: 2em;
   }
-  &_submit {
+  &__submit {
     color: vars.$dark-brown;
     background-color: white;
     border: 0;

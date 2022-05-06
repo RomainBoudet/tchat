@@ -12,7 +12,6 @@ import './style.scss';
 const Form = ({input, onChange, onSubmit}) => {
 
   const handleOnChange = (event) => {
-    console.log(event.target.value);
     onChange(event.target.value);
   };
 
@@ -26,12 +25,12 @@ const Form = ({input, onChange, onSubmit}) => {
  <form className='form' onSubmit={handleSubmit} >
     <input
     type='text'
-    className='form_input'
+    className='form__input'
     placeholder='Saisissez votre message...'
     onChange={handleOnChange}
     value={input}
     />
-    <button type='submit' className='form_submit' > <Send size={32} /> </button>
+    <button type='submit' className='form__submit' > <Send size={32} /> </button>
 
  </form>
 

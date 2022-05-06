@@ -4,11 +4,11 @@ import './style.scss'
 import classNames from 'classnames';
 
 const Message = ({ author, message, isOther }) => (
-  <div className= {classNames ('message',  {'message_other' : isOther })}>
-    <div className='message_author'>
+  <div className= {classNames ('message',  {'message__other' : isOther })}>
+    <div className='message__author'>
       { author }
     </div>
-    <div className='message_body'>
+    <div className='message__body'>
       { message }
     </div>
   </div>

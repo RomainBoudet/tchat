@@ -13,8 +13,8 @@ import axios from 'axios';
 // ma fonction n'est plus une fonction mais une promesse avec async devant ! Redux à l'air de gérer ça trés bien ici !
 
 const middleware = (store) => (next) => async (action) => {
-  /* switch (action.type) {
-    case FETCH_DATA: {
+   switch (action.type) {
+    /* case FETCH_DATA: {
         const state = store.getState();
 
         store.dispatch(loading(true));
@@ -37,12 +37,11 @@ const middleware = (store) => (next) => async (action) => {
         }
 
       break;
-    }
+    } */
     
-    } 
     default:
       next(action);
-  } */
+  }
 };
 
 export default middleware;
