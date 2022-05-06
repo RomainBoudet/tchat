@@ -1,5 +1,5 @@
 // import npm
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Send } from 'react-feather';
 import PropTypes from 'prop-types';
 
@@ -9,13 +9,15 @@ import './style.scss';
 
 // import react
 
-const Form = ({input, onChange, onSubmit}) => {
+const Form = ({ input, onChange, onSubmit }) => {
 
-  const handleOnChange = (event) => {
-    onChange(event.target.value);
-  };
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();}, []);
 
   
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (input.trim() === "") {
@@ -25,9 +27,14 @@ const Form = ({input, onChange, onSubmit}) => {
     onSubmit();
   };
 
+  const handleOnChange = (event) => {
+    onChange(event.target.value);
+  };
+
   return (
  <form className='form' onSubmit={handleSubmit} >
     <input
+    ref={inputRef}
     type='text'
     className='form__input'
     placeholder='Saisissez votre message...'
