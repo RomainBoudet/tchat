@@ -18,7 +18,11 @@ const Form = ({input, onChange, onSubmit}) => {
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(event.target[0].value);
+    if (input.trim() === "") {
+      return;
+    }
+    // la valeur : event.target[0].value
+    onSubmit();
   };
 
   return (

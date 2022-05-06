@@ -3,7 +3,7 @@
 // Pour éviter les fautes, et profiter de l'autocompletion, on met la string en variable !
 // Par convention, on nomme la string comme le nom de la variable, en MAJUSCULE.
 export const CHANGE_INPUT = 'CHANGE_INPUT';
-export const CHANGE_INPUT_VALIDATE = 'CHANGE_INPUT_VALIDATE';
+export const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE';
 
 // ACTIONs CREATORS
 
@@ -16,9 +16,8 @@ export const changeInput = (input) => ({
   input,
 });
 
-export const changeInputValidate = (inputValidate) => ({
-  type: CHANGE_INPUT_VALIDATE,
-  inputValidate,
+export const sendNewMessage = () => ({
+  type: SEND_NEW_MESSAGE,
 });
 
 // FSA : https://redux.js.org/tutorials/fundamentals/part-7-standard-patterns 

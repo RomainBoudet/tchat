@@ -2,12 +2,12 @@ import { connect } from 'react-redux';
 import Form from '../components/Form';
 
 import {
-  changeInput, changeInputValidate
+  changeInput, sendNewMessage
 } from '../actions';
 
 // Si rien ne doit provenir de mon state dans ce container => mapStateToProps = null
 const mapStateToProps = (state) => ({
- input: state.currentMessage,
+ input: state.input,
 });
 
 // Si rien ne doit changer mon state => mapDispatchToProps = {}
@@ -19,8 +19,8 @@ const mapStateToProps = (state) => ({
     dispatch(action);
   },
 
-  onSubmit: (newValue) => {
-    const action = changeInputValidate(newValue);
+  onSubmit: () => {
+    const action = sendNewMessage();
     dispatch(action);
   },
 }); 

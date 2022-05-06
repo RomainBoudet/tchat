@@ -1,5 +1,5 @@
 import {
-  CHANGE_INPUT, CHANGE_INPUT_VALIDATE,
+  CHANGE_INPUT, SEND_NEW_MESSAGE,
   } from '../actions';
   
   const stateInitial = {
@@ -24,30 +24,38 @@ import {
     },
     {
       id: 4,
-      author: 'Me',
+      author: 'Moi',
       message: 'Non c\'est pas bon pour ce que t\'a !',
       isOther: false,
     }],
   };
   
-  const reducer = (stateActuel = stateInitial, action) => {
-    console.log("on est dans le reducer !!");
+  const reducer = (state = stateInitial, action) => {
 
   // j'éxamine le .type de chaque action !
      switch (action.type) {
        case CHANGE_INPUT:
         return {
-          ...stateActuel,
+          ...state,
           input: action.input,
         };
-        case CHANGE_INPUT_VALIDATE:
+        case SEND_NEW_MESSAGE:
           return {
-            ...stateActuel,
-            inputValidate: action.inputValidate,
+            ...state,
+            messages: [
+              ...state.messages,
+              {
+                id: 5,
+              author: 'Moi',
+              message: state.input,
+              isOther: false,
+              }
+            ],
+            input: '',
           };
   
       default:
-        return stateActuel;
+        return state;
     } 
   };
   
