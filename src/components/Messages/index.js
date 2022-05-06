@@ -1,5 +1,5 @@
 // import npm
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Message from './message';
 import PropTypes from 'prop-types';
 // import { Routes, Route, Outlet, Link, NavLink } from "react-router-dom";
@@ -9,14 +9,21 @@ import './style.scss';
 
 // import react
 
-const Messages = ({ messages }) => (
-<div className='messages'>
+const Messages = ({ messages }) => { 
+  
+  const messageContainer = useRef(null);
+  useEffect(() => {
+    messageContainer.current.scrollTo(0, messageContainer.current.scrollHeight);
+  }, [messages])
+
+  return(
+<div className='messages' ref={messageContainer}>
   {messages.map((message) => (  
      <Message {...message} key={message.id} />
 ))}
 
 </div>
-);
+)};
 
 Messages.propTypes = {
   messages: PropTypes.arrayOf(PropTypes.shape({
