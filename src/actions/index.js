@@ -4,6 +4,8 @@
 // Par convention, on nomme la string comme le nom de la variable, en MAJUSCULE.
 export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE';
+export const TOGGLE_SETTINGS = 'TOGGLE_SETTINGS';
+
 
 // ACTIONs CREATORS
 
@@ -18,6 +20,10 @@ export const changeInput = (input) => ({
 
 export const sendNewMessage = () => ({
   type: SEND_NEW_MESSAGE,
+});
+
+export const toggleSettings = () => ({
+  type: TOGGLE_SETTINGS,
 });
 
 // FSA : https://redux.js.org/tutorials/fundamentals/part-7-standard-patterns 

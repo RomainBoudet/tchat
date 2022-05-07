@@ -6,7 +6,7 @@ import './styles.scss';
 import Form from '../../containers/Form';
 import Messages from '../../containers/Messages';
 import Footer from '../Footer';
-import Settings from '../../components/Settings';
+import Settings from '../../containers/Settings';
 
 // == Composant
 const App = () => (

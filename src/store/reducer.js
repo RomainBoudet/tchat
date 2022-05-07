@@ -1,14 +1,15 @@
 import {
-  CHANGE_INPUT, SEND_NEW_MESSAGE,
+  CHANGE_INPUT, SEND_NEW_MESSAGE, TOGGLE_SETTINGS
   } from '../actions';
 
   import { hightestID } from '../selector';
   
   const stateInitial = {
     input: '',
-    login: {
+    settings: {
       pseudo: 'Mon pseudo',
       password: '',
+      open: false,
     },
     messages: [{
       id: 1,
@@ -48,14 +49,20 @@ import {
               ...state.messages,
               {
               id: (hightestID(state.messages) + 1),
-              author: state.login.pseudo,
+              author: state.settings.pseudo,
               message: state.input,
-              isOther: false,
               }
             ],
             input: '',
           };
-  
+          case TOGGLE_SETTINGS:
+            return {
+              ...state,
+              settings: {
+                ...state.settings,
+                open: !state.settings.open,
+              }
+            };
       default:
         return state;
     } 
