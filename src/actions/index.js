@@ -5,6 +5,8 @@
 export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE';
 export const TOGGLE_SETTINGS = 'TOGGLE_SETTINGS';
+export const CHANGE_INPUT_EMAIL = 'CHANGE_INPUT_EMAIL';
+export const CHANGE_INPUT_PASSWORD = 'CHANGE_INPUT_PASSWORD';
 
 
 // ACTIONs CREATORS
@@ -25,6 +27,16 @@ export const sendNewMessage = () => ({
 export const toggleSettings = () => ({
   type: TOGGLE_SETTINGS,
 });
+
+export const onChangeEmail = (email) => ({
+  type: CHANGE_INPUT_EMAIL,
+  email,
+})
+
+export const onChangePass = (pass) => ({
+  type: CHANGE_INPUT_PASSWORD,
+  pass,
+})
 
 // FSA : https://redux.js.org/tutorials/fundamentals/part-7-standard-patterns 
 // https://github.com/redux-utilities/flux-standard-action#motivation

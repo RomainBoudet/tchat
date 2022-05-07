@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { toggleSettings } from 'src/actions';
-import Settings from 'src/components/Settings';
+import Settings from '../../components/Settings/index';
 
 // Si rien ne doit provenir de mon state dans ce container => mapStateToProps = null
 const mapStateToProps = (state, ownProps) => ({

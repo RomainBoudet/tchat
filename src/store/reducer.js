@@ -1,5 +1,5 @@
 import {
-  CHANGE_INPUT, SEND_NEW_MESSAGE, TOGGLE_SETTINGS
+  CHANGE_INPUT, SEND_NEW_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_EMAIL, CHANGE_INPUT_PASSWORD
   } from '../actions';
 
   import { hightestID } from '../selector';
@@ -7,7 +7,8 @@ import {
   const stateInitial = {
     input: '',
     settings: {
-      pseudo: 'Mon pseudo',
+      pseudo: '',
+      email: '',
       password: '',
       open: false,
     },
@@ -61,6 +62,22 @@ import {
               settings: {
                 ...state.settings,
                 open: !state.settings.open,
+              }
+            };
+            case CHANGE_INPUT_EMAIL:
+            return {
+              ...state,
+              settings: {
+                ...state.settings,
+                email: action.email,
+              }
+            };
+            case CHANGE_INPUT_PASSWORD:
+            return {
+              ...state,
+              settings: {
+                ...state.settings,
+                password: action.pass,
               }
             };
       default:
