@@ -1,0 +1,82 @@
+@use 'src/styles/vars';
+
+
+
+.settings {
+  position: fixed;
+  right: 0.5rem;
+  top: 0.5rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  transform: translateX(calc(100% - 50px));
+  transition: transform 0.5s ease-in-out;
+
+
+
+  &>button {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 0;
+    color: vars.$dark-brown;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    &>input {
+      background-color: vars.$light-color;
+      border: 0;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      margin: 0.2rem 0;
+    }
+
+    &>button {
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      margin: 0.2rem 0;
+      background-color: vars.$dark-orange;
+      color: vars.$dark-brown;
+      font-weight: bold;
+      font-size: medium;
+      border: 0;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        background-color: vars.$dark-brown;
+        color: vars.$dark-orange;
+        border: 2px solid vars.$dark-orange;
+        transform: scale(1);
+      }
+    }
+
+  }
+
+  &--active {
+    transform: translateX(0);
+    &>button {
+      transform: rotate(405deg);
+      &:hover {
+        transform: rotate(405deg) scale(1.2);
+      }
+    }
+
+  }
+
+
+}
