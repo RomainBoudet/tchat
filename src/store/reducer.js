@@ -1,5 +1,5 @@
 import {
-  CHANGE_INPUT, SEND_NEW_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD
+  CHANGE_INPUT, SEND_NEW_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING
   } from '../actions';
 
   import { hightestID } from '../selector';
@@ -11,6 +11,8 @@ import {
       email: '',
       password: '',
       open: false,
+      loading: false,
+
     },
     messages: [{
       id: 1,
@@ -69,7 +71,27 @@ import {
               ...state,
               settings: {
                 ...state.settings,
-                [action.fieldName]: action.value,
+                [action.fieldName]: action.value, 
+                // valeur de la propriété dynamique ! On récupéres la valeur d'une clé qui change !
+              }
+            };
+            case SAVE_PSEUDO:
+            return {
+              ...state,
+              settings: {
+                ...state.settings,
+                pseudo: action.pseudo,
+                email: '',
+                password: '',
+                open: false,
+              }
+            };
+            case LOADING:
+            return {
+              ...state,
+              settings: {
+                ...state.settings,
+                loading: action.bool, 
               }
             };
       default:

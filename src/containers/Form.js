@@ -8,6 +8,7 @@ import {
 // Si rien ne doit provenir de mon state dans ce container => mapStateToProps = null
 const mapStateToProps = (state) => ({
  input: state.input,
+ pseudo: state.settings.pseudo,
 });
 
 // Si rien ne doit changer mon state => mapDispatchToProps = {}

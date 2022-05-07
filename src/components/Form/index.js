@@ -9,7 +9,7 @@ import './style.scss';
 
 // import react
 
-const Form = ({ input, onChange, onSubmit }) => {
+const Form = ({ input, onChange, onSubmit, pseudo }) => {
 
   const inputRef = useRef(null);
 
@@ -31,13 +31,21 @@ const Form = ({ input, onChange, onSubmit }) => {
     onChange(event.target.value);
   };
 
+  let placeHolder;
+  if(pseudo !== '') {
+    placeHolder = `Bonjour ${pseudo}, Saisissez votre message...`;
+  } else {
+    placeHolder = 'Saisissez votre message...'
+  }
+
+
   return (
  <form className='form' onSubmit={handleSubmit} >
     <input
     ref={inputRef}
     type='text'
     className='form__input'
-    placeholder='Saisissez votre message...'
+    placeholder={placeHolder}
     onChange={handleOnChange}
     value={input}
     />

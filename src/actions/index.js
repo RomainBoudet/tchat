@@ -6,6 +6,9 @@ export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const SEND_NEW_MESSAGE = 'SEND_NEW_MESSAGE';
 export const TOGGLE_SETTINGS = 'TOGGLE_SETTINGS';
 export const CHANGE_INPUT_FIELD = 'CHANGE_INPUT_FIELD';
+export const FETCH_LOGIN = 'FETCH_LOGIN';
+export const SAVE_PSEUDO = 'SAVE_PSEUDO';
+export const LOADING = 'LOADING';
 
 
 // ACTIONs CREATORS
@@ -32,6 +35,20 @@ export const onChangeField = (fieldName, value) => ({
   fieldName,
   value,
 })
+
+export const fetchLogin = () => ({
+  type: FETCH_LOGIN,
+});
+
+export const savePseudo = (pseudo) => ({
+  type: SAVE_PSEUDO,
+  pseudo,
+});
+
+export const loading = (bool) => ({
+  type: LOADING,
+  bool,
+});
 
 // FSA : https://redux.js.org/tutorials/fundamentals/part-7-standard-patterns 
 // https://github.com/redux-utilities/flux-standard-action#motivation
