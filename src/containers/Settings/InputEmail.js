@@ -12,7 +12,6 @@ const mapDispatchToProps = (dispatch) => ({
   // ma_props: (inputValue) => dispatch(mon_action(inputValue)),
 
   onChangeEmail: (newValue) => {
-    console.log("on est dans le container !");
    const action = onChangeEmail(newValue);
    dispatch(action);
   }, 

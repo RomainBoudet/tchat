@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
-import InputEmail from '../../containers/Settings/InputEmail';
-import InputPassword from '../../containers/Settings/InputPassword';
+import InputField from '../../containers/Settings/InputField';
 
 import './style.scss'
 
@@ -13,8 +12,17 @@ const Settings = ({ open, openToggle }) => (
   <div className={classNames('settings', {'settings--active' : open})}>
   <button type='button' onClick={openToggle}>+</button>
   <form>
-    <InputEmail />
-    <InputPassword />
+    <InputField
+    inputname="email" // j'envoie inputName pour savoir quel champs sera modifié
+    type="email" 
+    placeholder="Adresse email" 
+    />
+    <InputField
+    inputname="password"
+    type="password" 
+    placeholder="Mot de passe" 
+    />
+
     <button type="submit">Envoyer</button>
   </form>
   </div>

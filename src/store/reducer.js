@@ -1,5 +1,5 @@
 import {
-  CHANGE_INPUT, SEND_NEW_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_EMAIL, CHANGE_INPUT_PASSWORD
+  CHANGE_INPUT, SEND_NEW_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD
   } from '../actions';
 
   import { hightestID } from '../selector';
@@ -64,20 +64,12 @@ import {
                 open: !state.settings.open,
               }
             };
-            case CHANGE_INPUT_EMAIL:
+            case CHANGE_INPUT_FIELD:
             return {
               ...state,
               settings: {
                 ...state.settings,
-                email: action.email,
-              }
-            };
-            case CHANGE_INPUT_PASSWORD:
-            return {
-              ...state,
-              settings: {
-                ...state.settings,
-                password: action.pass,
+                [action.fieldName]: action.value,
               }
             };
       default:
