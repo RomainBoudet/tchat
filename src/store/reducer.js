@@ -6,29 +6,29 @@ import {
   
   const stateInitial = {
     input: '',
+    login: {
+      pseudo: 'Mon pseudo',
+      password: '',
+    },
     messages: [{
       id: 1,
       author: 'Super Chat',
       message: 'Salut ça va ?',
-      isOther: true,
     },
     {
       id: 2,
       author: 'Super Chat',
       message: 'T\'a pas des super croquettes ?',
-      isOther: true,
     },
     {
       id: 3,
       author: 'Super Chat',
       message: 'Stp !',
-      isOther: true,
     },
     {
       id: 4,
-      author: 'Moi',
+      author: 'Mon pseudo',
       message: 'Non c\'est pas bon pour ce que t\'a !',
-      isOther: false,
     }],
   };
   
@@ -48,7 +48,7 @@ import {
               ...state.messages,
               {
               id: (hightestID(state.messages) + 1),
-              author: 'Moi',
+              author: state.login.pseudo,
               message: state.input,
               isOther: false,
               }

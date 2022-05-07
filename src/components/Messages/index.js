@@ -1,6 +1,6 @@
 // import npm
 import React, { useRef, useEffect } from 'react';
-import Message from './message';
+import Message from '../../containers/Message';
 import PropTypes from 'prop-types';
 // import { Routes, Route, Outlet, Link, NavLink } from "react-router-dom";
 
