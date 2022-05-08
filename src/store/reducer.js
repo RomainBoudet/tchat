@@ -1,5 +1,5 @@
 import {
-  CHANGE_INPUT, SEND_NEW_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING
+  CHANGE_INPUT, SEND_NEW_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING, UNAUTHORIZED
   } from '../actions';
 
   import { hightestID } from '../selector';
@@ -8,10 +8,12 @@ import {
     input: '',
     settings: {
       pseudo: '',
+      color: '',
       email: '',
       password: '',
       open: false,
       loading: false,
+      unauthorized: '',
 
     },
     messages: [{
@@ -71,8 +73,10 @@ import {
               ...state,
               settings: {
                 ...state.settings,
-                [action.fieldName]: action.value, 
+                [action.fieldName]: action.value,
                 // valeur de la propriété dynamique ! On récupéres la valeur d'une clé qui change !
+                unauthorized: false,
+                // remise a false: permet de renvoyer le segment erreur si new bad input
               }
             };
             case SAVE_PSEUDO:
@@ -84,6 +88,7 @@ import {
                 email: '',
                 password: '',
                 open: false,
+                unauthorized: false,
               }
             };
             case LOADING:
@@ -92,6 +97,14 @@ import {
               settings: {
                 ...state.settings,
                 loading: action.bool, 
+              }
+            };
+            case UNAUTHORIZED:
+            return {
+              ...state,
+              settings: {
+                ...state.settings,
+                unauthorized: action.bool, 
               }
             };
       default:

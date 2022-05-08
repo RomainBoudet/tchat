@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import InputField from '../../containers/Settings/InputField';
-
+import Spinner from '../Spinner'
+import SegmentError from './unauthorized';
 
 import './style.scss'
 
 
-const Settings = ({ open, openToggle, onLogin, loading }) => {
+const Settings = ({ open, openToggle, onLogin, loading, unauthorized }) => {
 
   const handleSubmitSettings = (event) => {
   event.preventDefault();
@@ -33,7 +34,10 @@ const Settings = ({ open, openToggle, onLogin, loading }) => {
     icon="key"
     />
 
-    <button type="submit" disabled={loading}>Envoyer</button>
+    <button type="submit" disabled={loading}>{loading ? <Spinner/> : 'Envoyer'}</button>
+
+    {unauthorized && <SegmentError /> }
+
   </form>
   </div>
 );

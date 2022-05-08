@@ -3,6 +3,7 @@ import {
   FETCH_LOGIN,
   savePseudo,
   loading,
+  unauthorized,
 } from 'src/actions'
 
 
@@ -27,7 +28,10 @@ const middleware = (store) => (next) => async (action) => {
           store.dispatch(savePseudo(response.data.pseudo));
         }
         catch (error) {
-          console.trace(error);
+          // console.trace(error);
+          store.dispatch(unauthorized(true));
+
+          // je pourrasi aussi récupérer l'érreur du serveur pour la mettre dans le state...
           // si 401 => Pas autoriser a se connecter, je gére l'info du serveur !
         }
         finally {

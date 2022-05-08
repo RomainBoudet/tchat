@@ -9,6 +9,7 @@ export const CHANGE_INPUT_FIELD = 'CHANGE_INPUT_FIELD';
 export const FETCH_LOGIN = 'FETCH_LOGIN';
 export const SAVE_PSEUDO = 'SAVE_PSEUDO';
 export const LOADING = 'LOADING';
+export const UNAUTHORIZED = 'UNAUTHORIZED';
 
 
 // ACTIONs CREATORS
@@ -47,6 +48,11 @@ export const savePseudo = (pseudo) => ({
 
 export const loading = (bool) => ({
   type: LOADING,
+  bool,
+});
+
+export const unauthorized = (bool) => ({
+  type:UNAUTHORIZED,
   bool,
 });
 

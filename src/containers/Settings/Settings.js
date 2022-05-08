@@ -6,6 +6,7 @@ import Settings from '../../components/Settings/index';
 const mapStateToProps = (state, ownProps) => ({
   open: state.settings.open,
   loading: state.settings.loading,
+  unauthorized: state.settings.unauthorized,
 });
 
 // Si rien ne doit changer mon state => mapDispatchToProps = {}

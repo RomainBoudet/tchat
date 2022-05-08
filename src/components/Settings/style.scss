@@ -59,6 +59,11 @@
       border: 0;
       transition: all 0.3s ease-in-out;
 
+
+      &:disabled {
+        opacity: 0.8;
+      }
+
       &:hover {
         background-color: vars.$dark-brown;
         color: vars.$dark-orange;
