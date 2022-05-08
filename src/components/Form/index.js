@@ -35,7 +35,7 @@ const Form = ({ input, onChange, onSubmit, pseudo }) => {
   if(pseudo !== '') {
     placeHolder = `Bonjour ${pseudo}, Saisissez votre message...`;
   } else {
-    placeHolder = 'Saisissez votre message...'
+    placeHolder = 'Connectez vous, puis saisissez votre message...'
   }
 
 
@@ -48,6 +48,7 @@ const Form = ({ input, onChange, onSubmit, pseudo }) => {
     placeholder={placeHolder}
     onChange={handleOnChange}
     value={input}
+    disabled={!pseudo}
     />
     <button type='submit' className='form__submit' > <Send size={32} /> </button>
 
@@ -60,6 +61,7 @@ Form.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
   input: PropTypes.string.isRequired,
+  pseudo: PropTypes.string.isRequired,
 };
 
 
