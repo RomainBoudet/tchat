@@ -4,6 +4,7 @@ import Message from 'src/components/Messages/message';
 // Si rien ne doit provenir de mon state dans ce container => mapStateToProps = null
 const mapStateToProps = (state, ownProps) => ({
   isOther: state.settings.pseudo !== ownProps.author, // si true ou false alors classNames saura quoi afficher
+  color: state.settings.color
 });
 
 // Si rien ne doit changer mon state: const mapDispatchToProps = {}

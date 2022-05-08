@@ -10,7 +10,7 @@ export const FETCH_LOGIN = 'FETCH_LOGIN';
 export const SAVE_PSEUDO = 'SAVE_PSEUDO';
 export const LOADING = 'LOADING';
 export const UNAUTHORIZED = 'UNAUTHORIZED';
-
+export const SET_COLOR = 'SET_COLOR';
 
 // ACTIONs CREATORS
 
@@ -52,9 +52,15 @@ export const loading = (bool) => ({
 });
 
 export const unauthorized = (bool) => ({
-  type:UNAUTHORIZED,
+  type: UNAUTHORIZED,
   bool,
 });
+
+export const setColor = (color) => ({
+  type: SET_COLOR,
+  color,
+});
+
 
 // FSA : https://redux.js.org/tutorials/fundamentals/part-7-standard-patterns 
 // https://github.com/redux-utilities/flux-standard-action#motivation

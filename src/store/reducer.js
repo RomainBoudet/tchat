@@ -1,5 +1,5 @@
 import {
-  CHANGE_INPUT, SEND_NEW_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING, UNAUTHORIZED
+  CHANGE_INPUT, SEND_NEW_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING, UNAUTHORIZED, SET_COLOR
   } from '../actions';
 
   import { hightestID } from '../selector';
@@ -14,6 +14,7 @@ import {
       open: false,
       loading: false,
       unauthorized: '',
+      color: '',
 
     },
     messages: [{
@@ -85,8 +86,8 @@ import {
               settings: {
                 ...state.settings,
                 pseudo: action.pseudo,
-                email: '',
                 password: '',
+                email: '',
                 open: false,
                 unauthorized: false,
               }
@@ -105,6 +106,14 @@ import {
               settings: {
                 ...state.settings,
                 unauthorized: action.bool, 
+              }
+            };
+            case SET_COLOR:
+            return {
+              ...state,
+              settings: {
+                ...state.settings,
+                color: action.color, 
               }
             };
       default:
