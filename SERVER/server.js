@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const Server = require('http').Server;
 const socket = require('socket.io');
 
+const cors = require ('cors');
+
 
 /*
  * Vars
@@ -11,6 +13,14 @@ const app = express();
 const server = Server(app);
 const io = socket(server);
 const port = 3005;
+
+app.use(cors({
+  optionsSuccessStatus: 200,
+  credentials: true, // pour envoyer des cookies et des en-têtes d'autorisations faut rajouter une autorisation avec l'option credential
+  origin: "http://localhost:8090",
+  methods: "GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS", // ok via un array aussi
+  // allowedHeaders: ['Content-Type', 'x-xsrf-token'],
+}))
 
 const db = {
   users: {
@@ -37,7 +47,7 @@ const db = {
  */
 app.use(bodyParser.json());
 app.use((_, response, next) => {
-  response.header('Access-Control-Allow-Origin', 'http://localhost:8090');
+  // response.header('Access-Control-Allow-Origin', "http://localhost:8090");
   // response.header('Access-Control-Allow-Credentials', true);
   response.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   response.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
@@ -132,5 +142,5 @@ app.get('/theme/:email', (request, response) => {
  * Server
  */
 server.listen(port, () => {
-  console.log(`listening on *:${port}`);
+  console.log(`listening on http://localhost:${port}`);
 });
