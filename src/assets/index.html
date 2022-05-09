@@ -12,7 +12,18 @@
  		<script src="http://localhost:3005/socket.io/socket.io.js"></script>
 		<script>
 			 /* const socket = io('http://localhost:3005'); */
+
+			 //je créer un canal d'échange avec le serveur
 		socket = io('http://localhost:3005', { transports : ['websocket', 'polling', 'flashsocket'] });
+
+		// on se met en parallélée en mode écoute
+		// et si le serveur envoie "receive_message" je fais ce qu'il y a dans les accolades !
+		socket.on('receive_message', (message) => {
+			console.log("mon message : ", message);
+		})
+
+		// j'envoie un message au serveur qui sera renvoyé a tous le monde , y compris à la personne qui l'a émise...
+		socket.emit('tchat_message', {author: 'Obama', message: 'Hello every body !'})
  	</script>
 	</body>
 </html>
