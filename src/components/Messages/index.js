@@ -18,9 +18,10 @@ const Messages = ({ messages }) => {
 
   return(
 <div className='messages' ref={messageContainer}>
-  {messages.map((message) => (  
+  {messages.map((message) => {
+    return (  
      <Message {...message} key={message.id} />
-))}
+)})}
 
 </div>
 )};

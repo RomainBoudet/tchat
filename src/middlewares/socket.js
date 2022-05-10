@@ -18,7 +18,6 @@ let socket = null;
 const middleware = (store) => (next) => async (action) => {
   const { input, settings: { pseudo }} = store.getState();
 
-
    switch (action.type) {
     case WS_CONNECT: 
         // ici je créer un canal d'échange avec le serveur ! Lancé direct au chargment de l'App.
@@ -29,13 +28,13 @@ const middleware = (store) => (next) => async (action) => {
           // Qu'est ce que je vais faire aprés avoir recu mes messages ?
           // je les stock dans mon state via une nouvelle action
           store.dispatch(saveMessage(payload.id, payload.author, payload.message));
+
         })
     return next(action);
   
     case SEND_NEW_MESSAGE: 
 
-      // ici je créer un canal d'échange avec le serveur ! Lancé direct au chargment de l'App.
-      // Grace a lui, je vais pouvoir écouter les messages et envoyer des messages
+      // je transmet les messages du serveur. Mais au départ, pas de message du tout. 
       socket.emit('tchat_message', {author: pseudo, message: input})
   return next(action);
   

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Form from '../components/Form';
 
 import {
-  changeInput, saveMessage
+  changeInput, sendNewMessage
 } from '../actions';
 
 // Si rien ne doit provenir de mon state dans ce container => mapStateToProps = null
@@ -21,7 +21,7 @@ const mapStateToProps = (state) => ({
   },
 
   onSubmit: () => {
-    const action = saveMessage();
+    const action = sendNewMessage();
     dispatch(action);
   },
 }); 

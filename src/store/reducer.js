@@ -2,7 +2,7 @@ import {
   CHANGE_INPUT, SAVE_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING, UNAUTHORIZED, SET_COLOR
   } from '../actions';
 
-  import { hightestID } from '../selector';
+  // import { hightestID } from '../selector';
   
   const stateInitial = {
     input: '',
@@ -17,26 +17,7 @@ import {
       color: '',
 
     },
-    messages: [{
-      id: 1,
-      author: 'Super Chat',
-      message: 'Salut ça va ?',
-    },
-    {
-      id: 2,
-      author: 'Super Chat',
-      message: 'T\'a pas des super croquettes ?',
-    },
-    {
-      id: 3,
-      author: 'Super Chat',
-      message: 'Stp !',
-    },
-    {
-      id: 4,
-      author: 'Mon pseudo',
-      message: 'Non c\'est pas bon pour ce que t\'a !',
-    }],
+    messages: [],
   };
   
   const reducer = (state = stateInitial, action) => {
@@ -106,6 +87,7 @@ import {
             case SAVE_MESSAGE:
             return {
               ...state,
+              input: '',
               messages: [
                 ...state.messages,
                  {
