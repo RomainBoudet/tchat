@@ -63,6 +63,7 @@
     "redux": "^4.2.0",
     "semantic-ui-css": "git+https://github.com/Semantic-Org/Semantic-UI-CSS.git",
     "semantic-ui-react": "^2.1.2",
+    "socket.io-client": "^4.5.0",
     "yarn-upgrade-all": "^0.7.1"
   }
 }

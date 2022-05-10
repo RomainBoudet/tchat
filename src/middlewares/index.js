@@ -1,12 +1,12 @@
 import axios from 'axios';
 import {
   FETCH_LOGIN,
+  SAVE_PSEUDO,
   savePseudo,
   loading,
   unauthorized,
   setColor,
 } from 'src/actions'
-import { SAVE_PSEUDO } from '../actions';
 
 
 // Une fonction qui return une fonction qui return une fonction !

@@ -1,5 +1,5 @@
 import {
-  CHANGE_INPUT, SEND_NEW_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING, UNAUTHORIZED, SET_COLOR
+  CHANGE_INPUT, SAVE_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING, UNAUTHORIZED, SET_COLOR
   } from '../actions';
 
   import { hightestID } from '../selector';
@@ -48,19 +48,6 @@ import {
           ...state,
           input: action.input,
         };
-        case SEND_NEW_MESSAGE:
-          return {
-            ...state,
-            messages: [
-              ...state.messages,
-              {
-              id: (hightestID(state.messages) + 1),
-              author: state.settings.pseudo,
-              message: state.input,
-              }
-            ],
-            input: '',
-          };
           case TOGGLE_SETTINGS:
             return {
               ...state,
@@ -116,6 +103,19 @@ import {
                 color: action.color, 
               }
             };
+            case SAVE_MESSAGE:
+            return {
+              ...state,
+              messages: [
+                ...state.messages,
+                 {
+                  id: action.id,
+                  author: action.author,
+                  message: action.message,
+                  isOther: false,
+                  },
+                 ],
+              };
       default:
         return state;
     } 

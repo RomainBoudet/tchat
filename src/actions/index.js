@@ -11,6 +11,9 @@ export const SAVE_PSEUDO = 'SAVE_PSEUDO';
 export const LOADING = 'LOADING';
 export const UNAUTHORIZED = 'UNAUTHORIZED';
 export const SET_COLOR = 'SET_COLOR';
+export const WS_CONNECT = 'WS_CONNECT';
+export const SAVE_MESSAGE = 'SAVE_MESSAGE';
+
 
 // ACTIONs CREATORS
 
@@ -59,6 +62,17 @@ export const unauthorized = (bool) => ({
 export const setColor = (color) => ({
   type: SET_COLOR,
   color,
+});
+
+export const wsConnect = () => ({
+  type: WS_CONNECT,
+});
+
+export const saveMessage = (id, author, message) => ({
+  type: SAVE_MESSAGE,
+  id,
+  author,
+  message,
 });
 
 
