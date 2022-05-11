@@ -4,8 +4,12 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import InputField from '../../containers/Settings/InputField';
+import IfLoggedIn from '../../containers/Settings/ifLoggedIn';
+import UserProfil from '../../containers/Settings/UserProfil';
 import Spinner from '../Spinner'
 import SegmentError from './unauthorized';
+import { Icon } from 'semantic-ui-react'
+
 
 import './style.scss'
 
@@ -19,7 +23,7 @@ const Settings = ({ open, openToggle, onLogin, loading, unauthorized, email, pas
   if (!email || !password) return;
   onLogin();
   };
-  // je pourrais faire ca pour la gestion des classes si je ne veux pas utiliser de package ext.
+  // je pourrais aussi faire un ternaire pour la gestion des classes si je ne veux pas utiliser de package ext :
   //   const settingsClass = isOpened ? 'settings' : 'settings settings-closed';
   // et envoyer settingsClass dans className=
 
@@ -28,6 +32,9 @@ const Settings = ({ open, openToggle, onLogin, loading, unauthorized, email, pas
   <div className={classNames('settings', {'settings--active' : open})}>
 
   <button type='button' onClick={openToggle}>+</button>
+  
+<IfLoggedIn>
+  <UserProfil/>
   <form onSubmit={handleSubmitSettings}>
     <InputField
     inputname="email" // j'envoie inputName pour savoir quel champs sera modifié
@@ -47,6 +54,9 @@ const Settings = ({ open, openToggle, onLogin, loading, unauthorized, email, pas
     {unauthorized && <SegmentError /> }
 
   </form>
+
+</IfLoggedIn>
+
   </div>
 );
    };
