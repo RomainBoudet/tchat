@@ -7,6 +7,8 @@ const mapStateToProps = (state, ownProps) => ({
   open: state.settings.open,
   loading: state.settings.loading,
   unauthorized: state.settings.unauthorized,
+  email: state.settings.email,
+  password: state.settings.password,
 });
 
 // Si rien ne doit changer mon state => mapDispatchToProps = {}

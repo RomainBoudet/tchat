@@ -10,15 +10,23 @@ import SegmentError from './unauthorized';
 import './style.scss'
 
 
-const Settings = ({ open, openToggle, onLogin, loading, unauthorized }) => {
+const Settings = ({ open, openToggle, onLogin, loading, unauthorized, email, password }) => {
+
+
 
   const handleSubmitSettings = (event) => {
   event.preventDefault();
+  if (!email || !password) return;
   onLogin();
   };
+  // je pourrais faire ca pour la gestion des classes si je ne veux pas utiliser de package ext.
+  //   const settingsClass = isOpened ? 'settings' : 'settings settings-closed';
+  // et envoyer settingsClass dans className=
 
    return (
+
   <div className={classNames('settings', {'settings--active' : open})}>
+
   <button type='button' onClick={openToggle}>+</button>
   <form onSubmit={handleSubmitSettings}>
     <InputField
@@ -47,7 +55,8 @@ Settings.propTypes = {
   open: PropTypes.bool.isRequired,
   openToggle: PropTypes.func.isRequired,
   onLogin: PropTypes.func.isRequired,
-
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
 };
 
 export default Settings;
