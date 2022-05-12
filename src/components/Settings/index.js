@@ -8,13 +8,13 @@ import IfLoggedIn from '../../containers/Settings/ifLoggedIn';
 import UserProfil from '../../containers/Settings/UserProfil';
 import Spinner from '../Spinner'
 import SegmentError from './unauthorized';
-import { Icon } from 'semantic-ui-react'
+import { Icon, Popup } from 'semantic-ui-react'
 
 
 import './style.scss'
 
 
-const Settings = ({ open, openToggle, onLogin, loading, unauthorized, email, password }) => {
+const Settings = ({ open, openToggle, onLogin, loading, unauthorized, email, password, signOut }) => {
 
 
 
@@ -31,8 +31,24 @@ const Settings = ({ open, openToggle, onLogin, loading, unauthorized, email, pas
 
   <div className={classNames('settings', {'settings--active' : open})}>
 
-  <button type='button' onClick={openToggle}>+</button>
-  
+  <div className='container-buttons'>
+    
+    <Popup
+      trigger={<button type='button' onClick={openToggle}>+</button>}
+      content='Ouverture du formulaire de connexion'
+      inverted
+      offset={[0, 5]}
+      position='left center'
+    />
+    <Popup
+      trigger={<Icon className='sign-out' name='sign-out' onClick={signOut} />}
+      content='Déconnexon'
+      inverted
+      offset={[0, 5]}
+      position='left center'
+    />
+</div>
+
 <IfLoggedIn>
   <UserProfil/>
   <form onSubmit={handleSubmitSettings}>
@@ -67,6 +83,7 @@ Settings.propTypes = {
   onLogin: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
+  signOut: PropTypes.func.isRequired,
 };
 
 export default Settings;

@@ -1,5 +1,5 @@
 import {
-  CHANGE_INPUT, SAVE_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING, UNAUTHORIZED, SET_COLOR
+  CHANGE_INPUT, SAVE_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING, UNAUTHORIZED, SET_COLOR, SIGN_OUT,
   } from '../actions';
 
   // import { hightestID } from '../selector';
@@ -97,6 +97,10 @@ import {
                   isOther: false,
                   },
                  ],
+              };
+              case SIGN_OUT:
+            return {
+              ...stateInitial
               };
       default:
         return state;

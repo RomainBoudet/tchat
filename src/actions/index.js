@@ -13,7 +13,7 @@ export const UNAUTHORIZED = 'UNAUTHORIZED';
 export const SET_COLOR = 'SET_COLOR';
 export const WS_CONNECT = 'WS_CONNECT';
 export const SAVE_MESSAGE = 'SAVE_MESSAGE';
-
+export const SIGN_OUT = 'SIGN_OUT';
 
 // ACTIONs CREATORS
 
@@ -73,6 +73,10 @@ export const saveMessage = (id, author, message) => ({
   id,
   author,
   message,
+});
+
+export const signOut = () => ({
+  type: SIGN_OUT,
 });
 
 
