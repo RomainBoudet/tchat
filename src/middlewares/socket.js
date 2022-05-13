@@ -1,10 +1,11 @@
 import {
   WS_CONNECT,
   SEND_NEW_MESSAGE,
+  SIGN_OUT,
   saveMessage,
-} from 'src/actions'
-import { io } from 'socket.io-client';
-
+  isConnected,
+} from 'src/actions';
+import socket from '../websocket';
 
 // Dans WS_CONNECT, je dois dispatcher tous les messages reçu par le serveur, dans le state.
 // En ajoutant leur id, author et message a mon action dispatch.
@@ -14,7 +15,6 @@ import { io } from 'socket.io-client';
 // le SEND_NEW_MESSAGE, doit s'arréter dans le MW socket avec un socket.emit qui envoie l'author et le message au serveur !
 
 
-let socket = null;
 const middleware = (store) => (next) => async (action) => {
   const { input, settings: { pseudo }} = store.getState();
 
@@ -22,12 +22,19 @@ const middleware = (store) => (next) => async (action) => {
     case WS_CONNECT: 
         // ici je créer un canal d'échange avec le serveur ! Lancé direct au chargment de l'App.
         // Grace a lui, je vais pouvoir écouter les messages et envoyer des messages
-        // socket = io('http://localhost:3005');
-        socket = io('http://localhost:3005', { transports : ['websocket', 'polling', 'flashsocket'] });
         socket.on('receive_message', (payload) => {
           // Qu'est ce que je vais faire aprés avoir recu mes messages ?
           // je les stock dans mon state via une nouvelle action
           store.dispatch(saveMessage(payload.id, payload.author, payload.message));
+          // j'envoie un emit pour dire que je suis connecté !
+
+        })
+        socket.on('receive_users', (pseudo) => {
+          console.log("pseudo dans le socket.on(receive_users) => ", pseudo);
+          // Qu'est ce que je vais faire aprés avoir recu mes messages ?
+          // je les stock dans mon state via une nouvelle action
+          store.dispatch(isConnected(pseudo));
+          // j'envoie un emit pour dire que je suis connecté !
 
         })
     return next(action);
@@ -36,8 +43,15 @@ const middleware = (store) => (next) => async (action) => {
 
       // je transmet les messages du serveur. Mais au départ, pas de message du tout. 
       socket.emit('tchat_message', {author: pseudo, message: input})
-  return next(action);
-  
+    return next(action);
+
+    case SIGN_OUT: 
+    // je transmet le message au server d'une déconnexion du user en question !
+    // le serveur recoit le pseudo, le recherche dans le tableau, sur le serveur, l'enléve et renvoie un nouveau tableau à tous, sans ce pseudo !
+    //! Le message doit comporter l'information de ajout ou de suppression du pseudo en entrée !
+    socket.emit();
+    return next(action);
+    
     default:
       next(action);
   }

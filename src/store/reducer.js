@@ -1,5 +1,5 @@
 import {
-  CHANGE_INPUT, SAVE_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING, UNAUTHORIZED, SET_COLOR, SIGN_OUT,
+  CHANGE_INPUT, SAVE_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING, UNAUTHORIZED, SET_COLOR, SIGN_OUT, IS_CONNECTED
   } from '../actions';
 
   // import { hightestID } from '../selector';
@@ -18,6 +18,7 @@ import {
 
     },
     messages: [],
+    users: [],
   };
   
   const reducer = (state = stateInitial, action) => {
@@ -58,7 +59,10 @@ import {
                 email: '',
                 open: false,
                 unauthorized: false,
-              }
+              },
+              users: [
+              ...state.users,
+              ]
             };
             case LOADING:
             return {
@@ -101,6 +105,13 @@ import {
               case SIGN_OUT:
             return {
               ...stateInitial
+              };
+              case IS_CONNECTED:
+            return {
+              ...state,
+              users: [
+                ...state.users, action.pseudo,
+                 ],
               };
       default:
         return state;

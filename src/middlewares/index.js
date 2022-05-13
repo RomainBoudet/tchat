@@ -6,7 +6,8 @@ import {
   loading,
   unauthorized,
   setColor,
-} from 'src/actions'
+} from 'src/actions';
+import socket from '../websocket';
 
 
 // Une fonction qui return une fonction qui return une fonction !
@@ -29,12 +30,16 @@ const middleware = (store) => (next) => async (action) => {
             }
           });
           store.dispatch(savePseudo(response.data.pseudo));
+          console.log("response.data.pseudo dans le MW index => ", response.data.pseudo);
+          // J'envoie un message au serveur lui signifiant qu'un nouvel user est connecté !
+          console.log("on est juste avant le emit dans le index MW !");
+          socket.emit('tchat_users', response.data.pseudo);
         }
         catch (error) {
           // console.trace(error);
           store.dispatch(unauthorized(true));
 
-          // je pourrasi aussi récupérer l'érreur du serveur pour la mettre dans le state...
+          // je pourrais aussi récupérer l'érreur du serveur pour la mettre dans le state...
           // si 401 => Pas autoriser à se connecter, je gére l'info du serveur !
         }
         finally {
@@ -74,3 +79,6 @@ const middleware = (store) => (next) => async (action) => {
 };
 
 export default middleware;
+
+/*      dispatch(onList(dataForOnList)).then((dataAfterOnList) => {
+       dispatch(setSkip(dataAfterOnList)); */

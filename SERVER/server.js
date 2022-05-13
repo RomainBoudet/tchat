@@ -103,6 +103,14 @@ io.on('connection', (ws) => {
     // ce que va émettre le serveur et recevoir le client
     io.emit('receive_message', message);
   });
+  ws.on('tchat_users', (pseudo) => {
+    console.log(">> received users from front  : ", pseudo)
+    // ce que va émettre le serveur et recevoir le client
+    io.emit('receive_users', pseudo);
+    // il faudrais stocker les users sur le serveur dans un tableau que je completerais a chaque fois qu'un user se connecte ou se déconnecte.
+    // et ainsi un user que se connecte en derner saurait quand me qui est déja connecté !
+    // Il faudrais emit non pas le pseudo directement en provenance du front mais le tableau complet !
+  });
 });
 
 /*

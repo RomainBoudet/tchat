@@ -14,6 +14,7 @@ export const SET_COLOR = 'SET_COLOR';
 export const WS_CONNECT = 'WS_CONNECT';
 export const SAVE_MESSAGE = 'SAVE_MESSAGE';
 export const SIGN_OUT = 'SIGN_OUT';
+export const IS_CONNECTED = 'IS_CONNECTED';
 
 // ACTIONs CREATORS
 
@@ -79,7 +80,10 @@ export const signOut = () => ({
   type: SIGN_OUT,
 });
 
-
+export const isConnected = (pseudo) => ({
+  type: IS_CONNECTED,
+  pseudo,
+});
 // FSA : https://redux.js.org/tutorials/fundamentals/part-7-standard-patterns 
 // https://github.com/redux-utilities/flux-standard-action#motivation
 
