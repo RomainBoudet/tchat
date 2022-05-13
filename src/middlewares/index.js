@@ -33,7 +33,7 @@ const middleware = (store) => (next) => async (action) => {
           console.log("response.data.pseudo dans le MW index => ", response.data.pseudo);
           // J'envoie un message au serveur lui signifiant qu'un nouvel user est connecté !
           console.log("on est juste avant le emit dans le index MW !");
-          socket.emit('tchat_users', response.data.pseudo);
+          socket.emit('tchat_users', {action: 'add', pseudo: response.data.pseudo});
         }
         catch (error) {
           // console.trace(error);
@@ -79,6 +79,3 @@ const middleware = (store) => (next) => async (action) => {
 };
 
 export default middleware;
-
-/*      dispatch(onList(dataForOnList)).then((dataAfterOnList) => {
-       dispatch(setSkip(dataAfterOnList)); */

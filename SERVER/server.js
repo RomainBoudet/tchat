@@ -87,7 +87,7 @@ app.post('/forgot', (request, response) => {
   }
 });
 
-
+let users=[];
 /*
  * Socket.io
  */
@@ -103,13 +103,30 @@ io.on('connection', (ws) => {
     // ce que va émettre le serveur et recevoir le client
     io.emit('receive_message', message);
   });
-  ws.on('tchat_users', (pseudo) => {
-    console.log(">> received users from front  : ", pseudo)
+
+  // Je souhaite que tous utilisateurs connectés a postériori, puissent connaître la liste des utilisateurs précédemmet connecté !
+  // je stock dans un tableau la liste des users présent en temps réel.
+  ws.on('tchat_users', (message) => {
+    console.log(">> received users from front  : ", message)
+    // A chaque reception d'un pseudo, je le push dans un tableau et renvoie ce nouveau tableau
+    if(message.action === 'add') {
+      users.push(message.pseudo);
+      console.log("users das le if add du server => ", users);
+      return io.emit('receive_users', users);
+    } 
+    if (message.action === 'del') {
+      // à chaque reception d'un peudo, je filtre le tableau users en elevant ce pseudo
+      const usersAfterDel = users.filter(item => item !== message.pseudo);
+      users = usersAfterDel;
+      console.log("users => ", users);
+
+      return io.emit('receive_users', usersAfterDel);
+    }
     // ce que va émettre le serveur et recevoir le client
-    io.emit('receive_users', pseudo);
-    // il faudrais stocker les users sur le serveur dans un tableau que je completerais a chaque fois qu'un user se connecte ou se déconnecte.
-    // et ainsi un user que se connecte en derner saurait quand me qui est déja connecté !
-    // Il faudrais emit non pas le pseudo directement en provenance du front mais le tableau complet !
+    //io.emit('receive_users', users);
+
+    console.log(">> WARNING - no action was send to the server !");
+
   });
 });
 

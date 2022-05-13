@@ -16,7 +16,8 @@ import socket from '../websocket';
 
 
 const middleware = (store) => (next) => async (action) => {
-  const { input, settings: { pseudo }} = store.getState();
+  const { input, settings: { pseudo, isLogged }} = store.getState();
+
 
    switch (action.type) {
     case WS_CONNECT: 
@@ -31,11 +32,16 @@ const middleware = (store) => (next) => async (action) => {
         })
         socket.on('receive_users', (pseudo) => {
           console.log("pseudo dans le socket.on(receive_users) => ", pseudo);
+          // ici pseudo est un array que je vais spread dans le reducer !
           // Qu'est ce que je vais faire aprés avoir recu mes messages ?
           // je les stock dans mon state via une nouvelle action
-          store.dispatch(isConnected(pseudo));
-          // j'envoie un emit pour dire que je suis connecté !
 
+          //! si on a signout, je ne veux pas recevoir d'info de ma propre deconnexion !
+          console.log("isLogged => ", isLogged);
+          if (isLogged || isLogged === '') {
+            (console.log("on est dans le isLogged qui va envoyer le dispatch isConnected !"));
+            return store.dispatch(isConnected(pseudo));
+          };
         })
     return next(action);
   
@@ -49,7 +55,10 @@ const middleware = (store) => (next) => async (action) => {
     // je transmet le message au server d'une déconnexion du user en question !
     // le serveur recoit le pseudo, le recherche dans le tableau, sur le serveur, l'enléve et renvoie un nouveau tableau à tous, sans ce pseudo !
     //! Le message doit comporter l'information de ajout ou de suppression du pseudo en entrée !
-    socket.emit();
+    //! ici je veux emit APRES que la valeur isLogged dans le state soit a fasle, pas avant !
+    //! => redux SAGA ! 
+    //! => https://tech-wiki.online/fr/redux-saga.html
+    socket.emit('tchat_users', {action: 'del', pseudo});
     return next(action);
     
     default:

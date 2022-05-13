@@ -1,6 +1,7 @@
 import {
   CHANGE_INPUT, SAVE_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING, UNAUTHORIZED, SET_COLOR, SIGN_OUT, IS_CONNECTED
   } from '../actions';
+  import socket from '../websocket';
 
   // import { hightestID } from '../selector';
   
@@ -15,6 +16,7 @@ import {
       loading: false,
       unauthorized: '',
       color: '',
+      isLogged: '',
 
     },
     messages: [],
@@ -59,6 +61,7 @@ import {
                 email: '',
                 open: false,
                 unauthorized: false,
+                isLogged: true,
               },
               users: [
               ...state.users,
@@ -110,7 +113,7 @@ import {
             return {
               ...state,
               users: [
-                ...state.users, action.pseudo,
+                ...action.pseudo,
                  ],
               };
       default:
