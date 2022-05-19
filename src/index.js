@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 // import { BrowserRouter as Router } from 'react-router-dom'; // j'intégre react-router.Je pourrais utiliser la balise Link et Route
 import store from './store';
 
-
 // == Import : local
 // Composants
 import App from 'src/components/App';

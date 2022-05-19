@@ -1,6 +1,7 @@
 import {
   WS_CONNECT,
   SEND_NEW_MESSAGE,
+  REMOVE_PSEUDO,
   SIGN_OUT,
   saveMessage,
   isConnected,
@@ -16,7 +17,7 @@ import socket from '../websocket';
 
 
 const middleware = (store) => (next) => async (action) => {
-  const { input, settings: { pseudo, isLogged }} = store.getState();
+  const { input, settings: { pseudo }} = store.getState();
 
 
    switch (action.type) {
@@ -37,27 +38,25 @@ const middleware = (store) => (next) => async (action) => {
           // je les stock dans mon state via une nouvelle action
 
           //! si on a signout, je ne veux pas recevoir d'info de ma propre deconnexion !
+          // et on prend la valeur de isLogged dans ce scope sinon, on a la valeur au démarrage de l'app, qui ne change pas !
+          const { settings: { isLogged }} = store.getState();
+
           console.log("isLogged => ", isLogged);
-          if (isLogged || isLogged === '') {
-            (console.log("on est dans le isLogged qui va envoyer le dispatch isConnected !"));
+          if (isLogged || isLogged === 'not_yet') {
             return store.dispatch(isConnected(pseudo));
           };
         })
-    return next(action);
+    return next(action); 
   
-    case SEND_NEW_MESSAGE: 
+     case SEND_NEW_MESSAGE: 
 
       // je transmet les messages du serveur. Mais au départ, pas de message du tout. 
       socket.emit('tchat_message', {author: pseudo, message: input})
     return next(action);
 
-    case SIGN_OUT: 
+    case REMOVE_PSEUDO: 
     // je transmet le message au server d'une déconnexion du user en question !
     // le serveur recoit le pseudo, le recherche dans le tableau, sur le serveur, l'enléve et renvoie un nouveau tableau à tous, sans ce pseudo !
-    //! Le message doit comporter l'information de ajout ou de suppression du pseudo en entrée !
-    //! ici je veux emit APRES que la valeur isLogged dans le state soit a fasle, pas avant !
-    //! => redux SAGA ! 
-    //! => https://tech-wiki.online/fr/redux-saga.html
     socket.emit('tchat_users', {action: 'del', pseudo});
     return next(action);
     

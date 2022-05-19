@@ -15,6 +15,7 @@ export const WS_CONNECT = 'WS_CONNECT';
 export const SAVE_MESSAGE = 'SAVE_MESSAGE';
 export const SIGN_OUT = 'SIGN_OUT';
 export const IS_CONNECTED = 'IS_CONNECTED';
+export const REMOVE_PSEUDO = 'REMOVE_PSEUDO';
 
 // ACTIONs CREATORS
 
@@ -78,6 +79,10 @@ export const saveMessage = (id, author, message) => ({
 
 export const signOut = () => ({
   type: SIGN_OUT,
+});
+
+export const removePseudo = () => ({
+  type: REMOVE_PSEUDO,
 });
 
 export const isConnected = (pseudo) => ({

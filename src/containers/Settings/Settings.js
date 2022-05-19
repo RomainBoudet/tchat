@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleSettings, fetchLogin, signOut } from 'src/actions';
+import { toggleSettings, fetchLogin, signOut, removePseudo } from 'src/actions';
 import Settings from '../../components/Settings/index';
 
 // Si rien ne doit provenir de mon state dans ce container => mapStateToProps = null
@@ -15,7 +15,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => ({
   openToggle: () => { dispatch(toggleSettings()) },
   onLogin: () => { dispatch(fetchLogin()) },
-  signOut: () => { dispatch (signOut()) },
+  signOut: () => { dispatch (signOut()).then(() => {
+    dispatch(removePseudo())
+  }) },
 
 });
 

@@ -1,8 +1,6 @@
 import {
-  CHANGE_INPUT, SAVE_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING, UNAUTHORIZED, SET_COLOR, SIGN_OUT, IS_CONNECTED
+  CHANGE_INPUT, SAVE_MESSAGE, TOGGLE_SETTINGS, CHANGE_INPUT_FIELD, SAVE_PSEUDO, LOADING, UNAUTHORIZED, SET_COLOR, SIGN_OUT, IS_CONNECTED, REMOVE_PSEUDO,
   } from '../actions';
-  import socket from '../websocket';
-
   // import { hightestID } from '../selector';
   
   const stateInitial = {
@@ -16,7 +14,7 @@ import {
       loading: false,
       unauthorized: '',
       color: '',
-      isLogged: '',
+      isLogged: 'not_yet',
 
     },
     messages: [],
@@ -107,7 +105,20 @@ import {
               };
               case SIGN_OUT:
             return {
-              ...stateInitial
+              ...stateInitial,
+              settings: {
+                ...stateInitial.settings,
+                pseudo: state.settings.pseudo,
+                isLogged: false,
+                }
+              };
+              case REMOVE_PSEUDO:
+            return {
+              ...stateInitial,
+              settings: {
+                ...stateInitial.settings,
+                isLogged: false,
+                }
               };
               case IS_CONNECTED:
             return {

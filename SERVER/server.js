@@ -111,7 +111,7 @@ io.on('connection', (ws) => {
     // A chaque reception d'un pseudo, je le push dans un tableau et renvoie ce nouveau tableau
     if(message.action === 'add') {
       users.push(message.pseudo);
-      console.log("users das le if add du server => ", users);
+      console.log("users dans le server => ", users);
       return io.emit('receive_users', users);
     } 
     if (message.action === 'del') {
