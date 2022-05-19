@@ -1,3 +1,7 @@
+//! --------------------------------------------
+//! MW plus utilisé, remplacé par redux-saga !! 
+//! --------------------------------------------
+
 import axios from 'axios';
 import {
   FETCH_LOGIN,
