@@ -1,6 +1,6 @@
 // == Import npm
 import React, { useEffect } from 'react';
-import { wsConnect } from 'src/actions';
+import { wsConnect, removePseudo } from 'src/actions';
 
 // == Import
 import './styles.scss';
@@ -22,7 +22,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(wsConnect())
+    dispatch(wsConnect());
   }, []);
 
 return (
