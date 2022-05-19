@@ -27,13 +27,14 @@ module.exports = merge(common, {
           },
           {
             loader: 'css-loader',
-            options: { importLoaders: 3 },
+            options: {  sourceMap: true, importLoaders: 3 },
           },
           'postcss-loader',
           'resolve-url-loader',
           {
             loader: 'sass-loader',
             options: {
+              sourceMap: true,
               implementation: require('sass'),
             },
           },

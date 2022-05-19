@@ -1,5 +1,5 @@
 //! --------------------------------------------
-//! MW plus utilisé, remplacé par redux-saga !! 
+//! MW NON utilisé, remplacé par redux-saga !! 
 //! --------------------------------------------
 
 import axios from 'axios';
