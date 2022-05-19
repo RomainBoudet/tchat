@@ -5,7 +5,7 @@ const API = {
   fetchLogin: async (userEmail, userPassword) => {
     const response = await axios({
       method: 'post',
-      url: `http://localhost:3005/login`,
+      url: `https://api-tchat.romainboudet.fr/login`,
       data: {
         email: userEmail,
         password: userPassword,
@@ -17,7 +17,7 @@ const API = {
   fetchTheme: async (email) => {
     const response = await axios({
       method: 'get',
-      url: `http://localhost:3005/theme/${email}`,
+      url: `https://api-tchat.romainboudet.fr/${email}`,
     });
     return response;
   },
