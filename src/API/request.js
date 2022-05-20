@@ -17,7 +17,7 @@ const API = {
   fetchTheme: async (email) => {
     const response = await axios({
       method: 'get',
-      url: `https://api-tchat.romainboudet.fr/${email}`,
+      url: `https://api-tchat.romainboudet.fr/theme/${email}`,
     });
     return response;
   },
