@@ -50,6 +50,7 @@ app.get('/', (req, res) => {
   res.send(   
   `<div style="width: 100%; height: 100%; background-color: black">
   <h1 style="text-align: center; padding-top: 10rem; color: brown;">Bienvenue sur l'API tchat !</h1>
+  <h2 style="text-align: center; padding-top: 2rem; color: brown;">Pour tester ce tchat, rendez vous sur <a href="https://tchat.romainboudet.fr">https://tchat.romainboudet.fr</a></h2>
   </div>`
   );
 })
