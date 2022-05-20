@@ -45,8 +45,13 @@ app.use((_, response, next) => {
   next();
 });
 
-
-
+app.get('/', (req, res) => {
+  res.send(   
+  `<div style="width: 100%; height: 100%; background-color: black">
+  <h1 style="text-align: center; padding-top: 10rem; color: brown;">Bienvenue sur l'API tchat !</h1>
+  </div>`
+  );
+})
 
 // Login avec vérification : POST /login
 app.post('/login', (request, response) => {
