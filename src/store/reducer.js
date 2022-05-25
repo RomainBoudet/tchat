@@ -3,7 +3,7 @@ import {
   } from '../actions';
   // import { hightestID } from '../selector';
   
-  const stateInitial = {
+  export const stateInitial = {
     input: '',
     settings: {
       pseudo: '',
@@ -21,7 +21,7 @@ import {
     users: [],
   };
   
-  const reducer = (state = stateInitial, action) => {
+const reducer = (state = stateInitial, action = {}) => {
 
   // j'éxamine le .type de chaque action !
      switch (action.type) {

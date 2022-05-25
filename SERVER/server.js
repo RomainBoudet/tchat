@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Server = require('http').Server;
 const socket = require('socket.io');
-const cors = require('cors');
 
 
 /*
@@ -13,11 +12,7 @@ const server = Server(app);
 const io = socket(server);
 const port = 3005;
 
-app.use(cors({
-  optionsSuccessStatus: 200,
-  origin: "https://tchat.romainboudet.fr",
-  methods: "GET, HEAD, PUT, PATCH, POST, DELETE, OPTIONS", // ok via un array aussi
-}));
+
 
 
 const db = {

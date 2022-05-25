@@ -7,7 +7,11 @@
     "lint:fix": "eslint --fix src/**/*.js",
     "clean": "rm -rf dist",
     "clean:all": "rm -rf dist node_modules yarn.lock package-lock.json",
-    "update": "yarn yarn-upgrade-all"
+    "update": "yarn yarn-upgrade-all",
+    "test": "cross-env NODE_PATH=./ mocha --require tests/.setup.js $(find . \\( -name '*.test.js' \\) | grep -v node_modules)",
+    "test:watch": "cross-env NODE_PATH=./ mocha --watch --require tests/.setup.js $(find . \\( -name '*.test.js' \\) -print | grep -v node_modules) $(find ./test/ -name '*.js' -print | grep -v node_modules)",
+    "info": "Dans 'test' la commande de recherche récupére tous les fichiers test y compris ceux dans nodes_modules et je retire de la réponse tout ce qui vient de node_modules. ('./{,!(node_modules)/**/}*.test.js') ne semble pas fonctionner !"
+
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
