@@ -9,11 +9,18 @@
 /* require ("@babel/register")();
 require("ignore-styles"); */
 
-import {expect} from 'chai';
-import reducer, { stateInitial } from 'src/store/reducer.js';
+import {
+  expect
+} from 'chai';
+import reducer, {
+  stateInitial
+} from 'src/store/reducer.js';
+import axios from 'axios';
 
-describe('Reducer tests', () => { 
-  it ('should be a function', () => {
+
+
+describe('Reducer tests', () => {
+  it('should be a function', () => {
     expect(reducer).to.be.a('function');
   });
 
@@ -21,4 +28,40 @@ describe('Reducer tests', () => {
     expect(reducer()).to.be.a('object');
     expect(reducer()).to.equal(stateInitial);
   });
-})
+});
+
+
+describe('Connected to the server', () => {
+  let responseAPI;
+
+  //before(function () {
+  // Une petite IIFE
+ (async () => {
+    responseAPI = await axios({
+      method: 'post',
+      url: `http://localhost:3005/login`,
+      data: {
+        email: "barack@obama.usa",
+        password: "password",
+      }
+    });
+  })();
+  //})
+  
+
+  
+
+  it('should return an object', () => {
+    expect(responseAPI.data).to.be.a('object');
+  });
+
+  it('should return the good pseudo after login credential', () => {
+    // eql et non equal : sinon je vérifit que l'objet que je test est le même objet, avec la même référence, ce qui n'est pas le cas !
+    // Il contient juste les même data.
+    expect(responseAPI.data).to.eql({
+      pseudo: 'Barack'
+    })
+
+  });
+
+});
